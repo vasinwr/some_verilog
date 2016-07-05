@@ -1,8 +1,8 @@
 // Verilog testbench
 
 `timescale 1ps/1ps
-`define DATA_WIDTH 2
-`define NUM_ELEMS  5
+`define DATA_WIDTH 3
+`define NUM_ELEMS  3
 
 module inner_product_tb ();
 

@@ -8,7 +8,7 @@ module pipelined_inner_product
 
   //locals
   wire [23 : 0] sums[0 : 2]; // intermediate product sums
-  reg rsum1, rsum2, rprod2, rprod3, rprod3_1;
+  reg [7:0] rsum1, rsum2, rprod2, rprod3, rprod3_1;
 
 
   assign sums[0] = inp1[2:0] * inp2[2:0];
