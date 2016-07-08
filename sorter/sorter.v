@@ -10,7 +10,7 @@ module sorter
 
     localparam total_cmp = (N)*(N-1)/2 ;  //total number of comparators needed
 
-    genvar i,j, n;
+    genvar i,j, n, k;
     wire [DW-1 :0] mins[1:total];  //intermediate results, index starts from 1
     wire [DW-1 :0] maxs[1:total];
 
@@ -32,7 +32,18 @@ module sorter
         end
     endgenerate
 
-    // TODO 
-    assign output 
+
+    //assign output
+    genvar l, count, acc;
+    generate 
+        count = 0;
+        acc = 0;
+        for(l = N-1; l > 0; l = l - 1) begin map_output:
+            assign outp[DW*(l)-1: DW*(l-1)] = mins[total-acc];
+            count = count + 1;
+            acc = acc + (count);      
+        end
+    endgenerate 
+    assign outp[(DW*N)-1 : DW*(N-1)] = maxs[total];
 
 endmodule
