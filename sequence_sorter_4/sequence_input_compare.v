@@ -1,0 +1,57 @@
+module sequence_input_compare
+    #(parameter
+        DW = 8
+    )
+    (
+ 	input wire clk,
+        input wire [DW -1 :0] inp,
+        output wire [DW-1 :0] outp
+    );
+
+	wire [DW-1 :0] mins[1:4];
+	reg  [DW-1 :0] input_change;
+	reg[1:0] count;
+	reg subout;
+	initial count=2'b0;
+	initial subout=0;
+
+	always@(posedge clk) begin
+				input_change<= input_change+2^(DW-1);
+				if(count == 2'b11) begin
+					count<=2'b0;
+					subout<=1'b1;
+				end
+				else begin
+					count<=count+1'b1;
+					subout<=1'b0;
+				end	
+	end//end of block
+
+
+
+    comparator #(.DW(DW)) cmp1 ( .inp(inp),
+				.substract(subout),
+				.clk(clk),  
+                               .out_min(mins[1])
+                              );
+    comparator #(.DW(DW)) cmp2 ( .inp(mins[1]),
+				.substract(subout),
+				.clk(clk),  
+                               .out_min(mins[2])
+                              );
+    comparator #(.DW(DW)) cmp3 ( .inp(mins[2]),
+				.substract(subout),
+				.clk(clk),  
+                               .out_min(mins[3])
+                              );
+    comparator #(.DW(DW)) cmp4 ( .inp(mins[3]),
+				.substract(subout),
+				.clk(clk),  
+                               .out_min(mins[4])
+                              );
+
+
+    //assign output
+    assign outp= mins[4];
+
+endmodule

@@ -13,7 +13,7 @@ all: sort4number
 
 
 # build simulation
-sort4number : $(SRCS)
+sort5number : $(SRCS)
 	$(VERILOG) -o $@  $(SRCS)	
 
 
