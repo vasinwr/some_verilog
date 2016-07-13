@@ -11,7 +11,7 @@ module sort4_sequence_test
 	reg[1:0] countin;
 	initial countin=2'b0;
 	initial subout=0;
-
+// timing: when to set subout
 	always@(posedge clk) begin
 				if(countin == 2'b11) begin
 					countin<=2'b0;
@@ -28,10 +28,10 @@ module sort4_sequence_test
       //counter 
       reg [data_width - 1 : 0] count;
       initial begin
-          count = 40;
+          count = 80;
       end
       always @ (posedge clk) begin 
-          count <= count + 1;
+          count <= count - 1;
 
 	if(subout == 1) begin
 		count<=count;

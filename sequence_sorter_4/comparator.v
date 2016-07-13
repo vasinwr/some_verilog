@@ -25,7 +25,7 @@ module comparator
     	end
 
 
-	if (substract == 1'b1)begin
+	if (substract == 1'b1)begin // these lines do not play any effect
 		max <= max - 2^(DW-1);
 		
 	end

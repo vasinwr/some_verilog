@@ -16,20 +16,23 @@ module sequence_input_compare
 	initial subout=0;
 
 	always@(posedge clk) begin
-				input_change<= input_change+2^(DW-1);
+				input_change<= inp+2^(DW-1);
 				if(count == 2'b11) begin
 					count<=2'b0;
-					subout<=1'b1;
 				end
 				else begin
 					count<=count+1'b1;
-					subout<=1'b0;
-				end	
+				end
+				if(count == 2'b10) begin
+					subout<=1'b1;
+				end
+
+			subout<=1'b0;
 	end//end of block
 
 
 
-    comparator #(.DW(DW)) cmp1 ( .inp(inp),
+    comparator #(.DW(DW)) cmp1 ( .inp(input_change),
 				.substract(subout),
 				.clk(clk),  
                                .out_min(mins[1])
