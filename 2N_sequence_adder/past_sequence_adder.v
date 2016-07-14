@@ -6,10 +6,9 @@ module past_sequence_adder
     (
         input wire clk,
         input wire [DW - 1 : 0] inp,
-        input wire [DW - 1 : 0] outp
+        output wire [DW - 1 : 0] outp
     );
 
-    //localparam geo_sum = (1-2**N)/(1-2);   // number of reg needed = geometric sum = a(1-r^n)/(1-r) where a = 1, r = 2, n = N 
     //reg [DW-1 : 0] regs [0:2**N-1][0:2**N-1]; // not supported by icarus verilog
     reg [DW-1:0] regs [1:(2**(2*N))];
     wire [DW-1:0] sums [0:N];
@@ -37,5 +36,6 @@ module past_sequence_adder
           end            
         end 
     end
+
 
 endmodule

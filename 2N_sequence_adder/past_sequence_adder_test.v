@@ -24,6 +24,7 @@ module past_sequence_adder_test
             .N(N),
             .DW(data_width)
         ) my_past_sequence_adder (
+            .clk(clk),
             .inp(count),
             .outp(outp)
         );
