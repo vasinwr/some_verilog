@@ -1,5 +1,5 @@
 `timescale 1ps/1ps
-`define DATA_WIDTH 4
+`define DATA_WIDTH 10
 `define N 3
 
 module past_sequnce_adder_tb ();
