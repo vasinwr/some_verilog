@@ -31,15 +31,11 @@ module past_sequence_adder
 
         regs[1] <= inp;
         for (j = 2; j <= N; j = j + 1) begin
-          //$display("begin: j",j, " k",k);
           for (k = 1; k <= j; k = k + 1) begin
-            //$display("j",j," k",k);
             if(k == 1) begin
-              //    $display("2");
                   regs[2**(N+j-2)+k] <= sums[j-1];
             end 
             else begin
-                //  $display("3");
                   regs[2**(N+j-2)+k] <= regs[2**(N+j-2)+k-1];
             end 
           end           
