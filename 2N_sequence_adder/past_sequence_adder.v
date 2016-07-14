@@ -23,18 +23,22 @@ module past_sequence_adder
 
     assign outp = sums[N];
 
-   reg j,k; 
+   reg j,k, n;
+   initial 
+      n = N; 
 
     always @ (posedge clk) begin
         regs[1] <= inp;
-        for (j = 2; j <= N; j = j + 1) begin
+        for (j = 2; j <= n; j = j + 1) begin
           for (k = 1; k <= j; k = k + 1) begin
-              if(k == 1)
+            if(k == 1) begin
                   regs[2**(N+j-2)+k] <= sums[j-1];
-              else
+            end 
+            else begin
                   regs[2**(N+j-2)+k] <= regs[2**(N+j-2)+k-1];
-          end            
-        end 
+            end
+          end           
+        end
     end
 
 
