@@ -2,7 +2,7 @@
 
 `timescale 1ps/1ps
 `define DATA_WIDTH 3
-`define NUM_ELEMS 4
+`define NUM_ELEMS 2
 
 
 module inner_product_tb ();
