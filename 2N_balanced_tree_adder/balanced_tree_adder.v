@@ -1,17 +1,35 @@
-module past_sequence_adder
+module past_balance_tree_adder
     #(parameter
         N = 4,
         DW = 8
     )
     (
         input wire clk,
-        input wire [DW - 1 : 0] inp,
-        output wire [DW - 1 : 0] outp
+        input wire [(2**N)*DW - 1 : 0] inp,
+        output wire [N*DW - 1 : 0] outp
     );
 
-    reg [DW-1:0] regs [1:(2**(2*N))]; // 2d array not supported by icarus
-    wire [DW-1:0] sums [0:N];
+    wire [DW-1:0] regs [1:(2**(2*N))]; // 2d array not supported by icarus
+
     genvar i;
+
+    generate 
+          for (j = 1; j <= (N-1); j = j + 1) begin
+         // $display("A: j=",j," k=",k);
+          for (k = 1; k <= 2**(j-1); k = k + 1) begin
+         //   $display("B: j=",j," k=",k);
+            if(j == (N-1)) begin
+        //          $display("B1");
+                  regs[2**(N-1)+k] <= inp[k*DW-1:(k-1)*DW]+inp[(k+1)*DW-1:k*DW];
+            end 
+            else begin
+           //       $display("B2");
+                  regs[2**(N+j-1)+k] <= regs[2**(N+j-2)+k-1];
+            end 
+          end           
+        end 
+    endgenerate  
+
 
     assign sums[1] = regs[1] + inp;
     generate 

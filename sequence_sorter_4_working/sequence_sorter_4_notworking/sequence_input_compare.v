@@ -16,7 +16,7 @@ module sequence_input_compare
 	initial subout=0;
 
 	always@(posedge clk) begin
-				input_change<= inp+2^(DW-1);
+				//input_change<= inp+2^(DW-1);
 				if(count == 2'b11) begin
 					count<=2'b0;
 				end

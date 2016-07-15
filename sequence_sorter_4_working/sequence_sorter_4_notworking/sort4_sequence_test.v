@@ -28,10 +28,10 @@ module sort4_sequence_test
       //counter 
       reg [data_width - 1 : 0] count;
       initial begin
-          count = 80;
+          count = 128;
       end
       always @ (posedge clk) begin 
-          count <= count - 1;
+          count <= count + 1;
 
 	if(subout == 1) begin
 		count<=count;

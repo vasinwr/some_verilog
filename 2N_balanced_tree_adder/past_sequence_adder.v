@@ -1,11 +1,11 @@
-module past_sequence_adder
+module past_balance_tree_adder
     #(parameter
         N = 4,
         DW = 8
     )
     (
         input wire clk,
-        input wire [DW - 1 : 0] inp,
+        input wire [N*DW - 1 : 0] inp,
         output wire [DW - 1 : 0] outp
     );
 
