@@ -19,7 +19,7 @@ module sequence_input_compare
 	reg [DW-1 :0] outreg3;
 	reg [DW-1 :0] outreg4;
 
-	//reg [DW-1 :0] input_change;
+	reg [DW-1 :0] input_change;
 
 	wire [DW-1 :0] min[1:4];
 
@@ -30,7 +30,7 @@ module sequence_input_compare
 
 
 	always@(posedge clk) begin
-				//input_change<= inp+2^(DW-1);
+				input_change<= inp+2**(DW-1);
 				outreg1<=outwire1;
 				outreg2<=outwire2;
 				outreg3<=outwire3;
@@ -56,7 +56,7 @@ module sequence_input_compare
 
 
 
-    comparator #(.DW(DW)) cmp1 ( .inp1(inp),
+    comparator #(.DW(DW)) cmp1 ( .inp1(input_change),
 				.inp2(outreg1),
                                .out_min(min[1]),
 				.out_max(outwire1)
