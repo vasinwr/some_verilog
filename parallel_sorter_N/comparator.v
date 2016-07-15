@@ -3,34 +3,24 @@ module comparator
         DW = 8
     )
     (
-        input wire [DW - 1: 0] inp,
-        input wire substract,
-	input wire clk,
-        output reg [DW - 1: 0] out_min
+        input wire [DW - 1: 0] inp1,
+        input wire [DW - 1: 0] inp2,
+        output reg [DW - 1: 0] out_min,
+        output reg [DW - 1: 0] out_max
     );
 	//wire [DW - 1: 0] out_min_in;
        // wire [DW - 1: 0] out_max_in;
-	reg [DW - 1: 0] max;
-    	initial max=0;
-
-   
-      always @ (posedge clk) begin
-
-  	if (inp< max) begin
-     	   	out_min <= inp;
+    
+    always@(inp1,inp2) 
+  	  if (inp1 < inp2) begin
+     	   	out_min = inp1;
+       	   	out_max = inp2;
     	end 
 	else begin
-        	out_min <= max;
-		max <= inp;
+        	out_min = inp2;
+       	        out_max = inp1;
     	end
-
-
-	if (substract == 1'b1)begin // these lines do not play any effect
-		max <= max - 2^(DW-1);
-		
-	end
-      end
-
+   
 
 	//assign out_min = out_min_in;
 	//assign out_max = out_max_in;
