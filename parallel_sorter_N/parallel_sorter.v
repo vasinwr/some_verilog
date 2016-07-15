@@ -32,11 +32,16 @@ module parallel_sorter
     generate
         for (i = 1; i < row; i = i+1) begin 
             for (j = 1; j < column-(row-1-i)*2 ; j = j+2) begin  
-                comparator #(.DW(DW)) cmp ( .inp1(wire_grid[(i-1)*row + j]),    //[i-1][j]
-                                            .inp2(wire_grid[i*row + (j-1)]),    //[i][j-1]
-                                            .out_min(wire_grid[(i+1)*row + j]), //[i+1][j]
-                                            .out_max(wire_grid[i*row + (j+1)])  //[i][j+1]
-                                          );
+                if( j == column-1 ) begin
+                  break;  // edge case: last column doesn't have comparator
+                end 
+                else begin
+                  comparator #(.DW(DW)) cmp ( .inp1(wire_grid[(i-1)*row + j]),    //[i-1][j]
+                                              .inp2(wire_grid[i*row + (j-1)]),    //[i][j-1]
+                                              .out_min(wire_grid[(i+1)*row + j]), //[i+1][j]
+                                              .out_max(wire_grid[i*row + (j+1)])  //[i][j+1]
+                                            );
+                end
             end
         end 
     endgenerate
