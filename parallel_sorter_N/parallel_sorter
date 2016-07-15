@@ -1,0 +1,146 @@
+#! /usr/local/Cellar/icarus-verilog/0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fb91a604220 .scope module, "inner_product_tb" "inner_product_tb" 2 8;
+ .timescale -12 -12;
+P_0x7fb91a405368 .param/l "TB_CLK_PERIOD" 2 13, +C4<011111010000>;
+P_0x7fb91a405390 .param/l "TB_RST_PERIOD" 2 14, +C4<0111110100000>;
+P_0x7fb91a4053b8 .param/l "TB_TIMEOUT" 2 12, +C4<011000011010100000>;
+v0x7fb91a410cd0_0 .net "inps", 5 0, L_0x7fb91a410ed0; 1 drivers
+RS_0x10b99d158 .resolv tri, L_0x7fb91a508310, L_0x7fb91a5071e0, C4<zzzzzz>, C4<zzzzzz>;
+v0x7fb91a410d70_0 .net8 "outp", 5 0, RS_0x10b99d158; 2 drivers
+v0x7fb91a410e30_0 .var "tb_clk", 0 0;
+S_0x7fb91a405520 .scope module, "sorter_test" "parallel_sorter_test" 2 30, 3 1, S_0x7fb91a604220;
+ .timescale 0 0;
+P_0x7fb91a405608 .param/l "data_width" 3 3, +C4<011>;
+P_0x7fb91a405630 .param/l "num_bits" 3 13, +C4<0110>;
+P_0x7fb91a405658 .param/l "num_elem" 3 4, +C4<010>;
+L_0x7fb91a410ed0 .functor BUFZ 6, v0x7fb91a410af0_0, C4<000000>, C4<000000>, C4<000000>;
+v0x7fb91a410a60_0 .net "clk", 0 0, v0x7fb91a410e30_0; 1 drivers
+v0x7fb91a410af0_0 .var "count", 5 0;
+v0x7fb91a410b90_0 .alias "outp", 5 0, v0x7fb91a410d70_0;
+v0x7fb91a410c50_0 .alias "outp_inps", 5 0, v0x7fb91a410cd0_0;
+E_0x7fb91a405420 .event posedge, v0x7fb91a410a60_0;
+S_0x7fb91a405710 .scope module, "sorter" "parallel_sorter" 3 29, 4 1, S_0x7fb91a405520;
+ .timescale 0 0;
+P_0x7fb91a4057f8 .param/l "DW" 4 4, +C4<011>;
+P_0x7fb91a405820 .param/l "N" 4 3, +C4<010>;
+P_0x7fb91a405848 .param/l "col" 4 11, +C4<010>;
+P_0x7fb91a405870 .param/l "row" 4 12, +C4<0100>;
+v0x7fb91a4107e0_0 .net "inp", 5 0, v0x7fb91a410af0_0; 1 drivers
+v0x7fb91a410870_0 .alias "outp", 5 0, v0x7fb91a410d70_0;
+v0x7fb91a410900 .array "wire_grid", 7 0;
+v0x7fb91a410900_0 .net v0x7fb91a410900 0, 2 0, C4<zzz>; 0 drivers
+v0x7fb91a410900_1 .net v0x7fb91a410900 1, 2 0, C4<zzz>; 0 drivers
+v0x7fb91a410900_2 .net v0x7fb91a410900 2, 2 0, L_0x7fb91a410fb0; 1 drivers
+v0x7fb91a410900_3 .net v0x7fb91a410900 3, 2 0, v0x7fb91a410080_0; 1 drivers
+v0x7fb91a410900_4 .net v0x7fb91a410900 4, 2 0, C4<zzz>; 0 drivers
+v0x7fb91a410900_5 .net v0x7fb91a410900 5, 2 0, v0x7fb91a40ffe0_0; 1 drivers
+v0x7fb91a410900_6 .net v0x7fb91a410900 6, 2 0, C4<zzz>; 0 drivers
+v0x7fb91a410900_7 .net v0x7fb91a410900 7, 2 0, L_0x7fb91a507a90; 1 drivers
+L_0x7fb91a508310 .part/pv L_0x7fb91a5083a0, 0, 3, 6;
+L_0x7fb91a5071e0 .part/pv L_0x7fb91a507520, 3, 3, 6;
+S_0x7fb91a410680 .scope generate, "genblk1" "genblk1" 4 21, 4 21, S_0x7fb91a405710;
+ .timescale 0 0;
+P_0x7fb91a410768 .param/l "r" 4 21, +C4<01>;
+L_0x7fb91a410fb0 .functor BUFZ 3, C4<zzz>, C4<000>, C4<000>, C4<000>;
+S_0x7fb91a410510 .scope generate, "genblk01" "genblk01" 4 21, 4 21, S_0x7fb91a405710;
+ .timescale 0 0;
+P_0x7fb91a4105f8 .param/l "r" 4 21, +C4<011>;
+L_0x7fb91a507a90 .functor BUFZ 3, v0x7fb91a40ffe0_0, C4<000>, C4<000>, C4<000>;
+S_0x7fb91a410310 .scope generate, "genblk2" "genblk2" 4 26, 4 26, S_0x7fb91a405710;
+ .timescale 0 0;
+P_0x7fb91a4103f8 .param/l "r" 4 26, +C4<00>;
+L_0x7fb91a5083a0 .functor BUFZ 3, v0x7fb91a410080_0, C4<000>, C4<000>, C4<000>;
+v0x7fb91a410480_0 .net *"_s2", 2 0, L_0x7fb91a5083a0; 1 drivers
+S_0x7fb91a410110 .scope generate, "genblk02" "genblk02" 4 26, 4 26, S_0x7fb91a405710;
+ .timescale 0 0;
+P_0x7fb91a4101f8 .param/l "r" 4 26, +C4<01>;
+L_0x7fb91a507520 .functor BUFZ 3, L_0x7fb91a507a90, C4<000>, C4<000>, C4<000>;
+v0x7fb91a410280_0 .net *"_s2", 2 0, L_0x7fb91a507520; 1 drivers
+S_0x7fb91a4059b0 .scope generate, "genblk3" "genblk3" 4 35, 4 35, S_0x7fb91a405710;
+ .timescale 0 0;
+P_0x7fb91a405a98 .param/l "i" 4 35, +C4<01>;
+S_0x7fb91a405b10 .scope generate, "genblk4" "genblk4" 4 36, 4 36, S_0x7fb91a4059b0;
+ .timescale 0 0;
+P_0x7fb91a405bf8 .param/l "j" 4 36, +C4<01>;
+S_0x7fb91a405c70 .scope module, "cmp" "comparator" 4 37, 5 1, S_0x7fb91a405b10;
+ .timescale -12 -12;
+P_0x7fb91a405d58 .param/l "DW" 5 3, +C4<011>;
+v0x7fb91a405e10_0 .alias "inp1", 2 0, v0x7fb91a410900_2;
+v0x7fb91a40ff50_0 .alias "inp2", 2 0, v0x7fb91a410900_1;
+v0x7fb91a40ffe0_0 .var "out_max", 2 0;
+v0x7fb91a410080_0 .var "out_min", 2 0;
+E_0x7fb91a405dd0 .event edge, v0x7fb91a40ff50_0, v0x7fb91a405e10_0;
+    .scope S_0x7fb91a405c70;
+T_0 ;
+    %wait E_0x7fb91a405dd0;
+    %load/v 8, v0x7fb91a405e10_0, 3;
+    %load/v 11, v0x7fb91a40ff50_0, 3;
+    %cmp/u 8, 11, 3;
+    %jmp/0xz  T_0.0, 5;
+    %load/v 8, v0x7fb91a405e10_0, 3;
+    %set/v v0x7fb91a410080_0, 8, 3;
+    %load/v 8, v0x7fb91a40ff50_0, 3;
+    %set/v v0x7fb91a40ffe0_0, 8, 3;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x7fb91a40ff50_0, 3;
+    %set/v v0x7fb91a410080_0, 8, 3;
+    %load/v 8, v0x7fb91a405e10_0, 3;
+    %set/v v0x7fb91a40ffe0_0, 8, 3;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x7fb91a405520;
+T_1 ;
+    %movi 8, 46, 6;
+    %set/v v0x7fb91a410af0_0, 8, 6;
+    %end;
+    .thread T_1;
+    .scope S_0x7fb91a405520;
+T_2 ;
+    %wait E_0x7fb91a405420;
+    %load/v 8, v0x7fb91a410af0_0, 6;
+    %mov 14, 0, 26;
+    %addi 8, 1, 32;
+    %ix/load 0, 6, 0;
+    %assign/v0 v0x7fb91a410af0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x7fb91a604220;
+T_3 ;
+    %delay 100000, 0;
+    %vpi_call 2 16 "$finish";
+    %end;
+    .thread T_3;
+    .scope S_0x7fb91a604220;
+T_4 ;
+    %set/v v0x7fb91a410e30_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_0x7fb91a604220;
+T_5 ;
+    %delay 1000, 0;
+    %load/v 8, v0x7fb91a410e30_0, 1;
+    %inv 8, 1;
+    %set/v v0x7fb91a410e30_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_0x7fb91a604220;
+T_6 ;
+    %wait E_0x7fb91a405420;
+    %vpi_call 2 37 "$display", "inps = ", v0x7fb91a410cd0_0, " => outp = ", v0x7fb91a410d70_0;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "parallel_sorter_tb.v";
+    "parallel_sorter_test.v";
+    "parallel_sorter.v";
+    "comparator.v";
