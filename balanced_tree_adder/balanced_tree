@@ -1,0 +1,188 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xdeb410 .scope module, "balanced_adder_tb" "balanced_adder_tb" 2 5;
+ .timescale -12 -12;
+P_0xdfdce8 .param/l "TB_CLK_PERIOD" 2 10, +C4<011111010000>;
+P_0xdfdd10 .param/l "TB_RST_PERIOD" 2 11, +C4<0111110100000>;
+P_0xdfdd38 .param/l "TB_TIMEOUT" 2 9, +C4<011000011010100000>;
+v0xe17470_0 .net "inps", 31 0, L_0xe176c0; 1 drivers
+v0xe17520_0 .net "outp", 11 0, L_0xe18660; 1 drivers
+v0xe175f0_0 .var "tb_clk", 0 0;
+S_0xdeb9f0 .scope module, "my_adder" "balanced_adder_test" 2 28, 3 1, S_0xdeb410;
+ .timescale 0 0;
+P_0xded138 .param/l "N" 3 4, +C4<011>;
+P_0xded160 .param/l "data_width" 3 3, +C4<0100>;
+L_0xe176c0 .functor BUFZ 32, v0xe17260_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0xe171c0_0 .net "clk", 0 0, v0xe175f0_0; 1 drivers
+v0xe17260_0 .var "count", 31 0;
+v0xe17310_0 .alias "outp", 11 0, v0xe17520_0;
+v0xe173c0_0 .alias "outp_inps", 31 0, v0xe17470_0;
+E_0xdd84d0 .event posedge, v0xe164c0_0;
+S_0xde8fe0 .scope module, "my_past_sequence_adder" "balance_tree_adder" 3 26, 4 1, S_0xdeb9f0;
+ .timescale 0 0;
+P_0xded1e8 .param/l "DW" 4 4, +C4<0100>;
+P_0xded210 .param/l "N" 4 3, +C4<011>;
+v0xe16210_0 .net *"_s12", 7 0, C4<00000000>; 1 drivers
+v0xe162d0_0 .net *"_s14", 11 0, L_0xe18500; 1 drivers
+v0xe16370_0 .net *"_s17", 7 0, C4<00000000>; 1 drivers
+v0xe16410_0 .net *"_s9", 11 0, L_0xe18410; 1 drivers
+v0xe164c0_0 .alias "clk", 0 0, v0xe171c0_0;
+v0xe16560_0 .net "inp", 31 0, v0xe17260_0; 1 drivers
+v0xe16640_0 .alias "outp", 11 0, v0xe17520_0;
+v0xe166e0 .array "regs", 64 1;
+v0xe166e0_0 .net v0xe166e0 0, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_1 .net v0xe166e0 1, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_2 .net v0xe166e0 2, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_3 .net v0xe166e0 3, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_4 .net v0xe166e0 4, 3 0, L_0xe17990; 1 drivers
+v0xe166e0_5 .net v0xe166e0 5, 3 0, L_0xe17c60; 1 drivers
+v0xe166e0_6 .net v0xe166e0 6, 3 0, L_0xe18050; 1 drivers
+v0xe166e0_7 .net v0xe166e0 7, 3 0, L_0xe182d0; 1 drivers
+v0xe166e0_8 .net v0xe166e0 8, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_9 .net v0xe166e0 9, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_10 .net v0xe166e0 10, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_11 .net v0xe166e0 11, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_12 .net v0xe166e0 12, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_13 .net v0xe166e0 13, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_14 .net v0xe166e0 14, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_15 .net v0xe166e0 15, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_16 .net v0xe166e0 16, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_17 .net v0xe166e0 17, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_18 .net v0xe166e0 18, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_19 .net v0xe166e0 19, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_20 .net v0xe166e0 20, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_21 .net v0xe166e0 21, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_22 .net v0xe166e0 22, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_23 .net v0xe166e0 23, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_24 .net v0xe166e0 24, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_25 .net v0xe166e0 25, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_26 .net v0xe166e0 26, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_27 .net v0xe166e0 27, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_28 .net v0xe166e0 28, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_29 .net v0xe166e0 29, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_30 .net v0xe166e0 30, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_31 .net v0xe166e0 31, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_32 .net v0xe166e0 32, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_33 .net v0xe166e0 33, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_34 .net v0xe166e0 34, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_35 .net v0xe166e0 35, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_36 .net v0xe166e0 36, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_37 .net v0xe166e0 37, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_38 .net v0xe166e0 38, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_39 .net v0xe166e0 39, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_40 .net v0xe166e0 40, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_41 .net v0xe166e0 41, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_42 .net v0xe166e0 42, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_43 .net v0xe166e0 43, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_44 .net v0xe166e0 44, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_45 .net v0xe166e0 45, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_46 .net v0xe166e0 46, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_47 .net v0xe166e0 47, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_48 .net v0xe166e0 48, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_49 .net v0xe166e0 49, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_50 .net v0xe166e0 50, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_51 .net v0xe166e0 51, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_52 .net v0xe166e0 52, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_53 .net v0xe166e0 53, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_54 .net v0xe166e0 54, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_55 .net v0xe166e0 55, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_56 .net v0xe166e0 56, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_57 .net v0xe166e0 57, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_58 .net v0xe166e0 58, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_59 .net v0xe166e0 59, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_60 .net v0xe166e0 60, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_61 .net v0xe166e0 61, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_62 .net v0xe166e0 62, 3 0, C4<zzzz>; 0 drivers
+v0xe166e0_63 .net v0xe166e0 63, 3 0, C4<zzzz>; 0 drivers
+L_0xe177c0 .part v0xe17260_0, 0, 4;
+L_0xe17860 .part v0xe17260_0, 4, 4;
+L_0xe17b20 .part v0xe17260_0, 4, 4;
+L_0xe17bc0 .part v0xe17260_0, 8, 4;
+L_0xe17e00 .part v0xe17260_0, 8, 4;
+L_0xe17ea0 .part v0xe17260_0, 12, 4;
+L_0xe18140 .part v0xe17260_0, 12, 4;
+L_0xe181e0 .part v0xe17260_0, 16, 4;
+L_0xe18410 .concat [ 4 8 0 0], C4<zzzz>, C4<00000000>;
+L_0xe18500 .concat [ 4 8 0 0], C4<zzzz>, C4<00000000>;
+L_0xe18660 .arith/sum 12, L_0xe18410, L_0xe18500;
+S_0xe15f20 .scope generate, "sum_loop[1]" "sum_loop[1]" 4 19, 4 19, S_0xde8fe0;
+ .timescale 0 0;
+P_0xe16018 .param/l "k" 4 19, +C4<01>;
+v0xe160d0_0 .net *"_s1", 3 0, L_0xe177c0; 1 drivers
+v0xe16170_0 .net *"_s2", 3 0, L_0xe17860; 1 drivers
+L_0xe17990 .arith/sum 4, L_0xe177c0, L_0xe17860;
+S_0xe15c30 .scope generate, "sum_loop[2]" "sum_loop[2]" 4 19, 4 19, S_0xde8fe0;
+ .timescale 0 0;
+P_0xe15d28 .param/l "k" 4 19, +C4<010>;
+v0xe15de0_0 .net *"_s1", 3 0, L_0xe17b20; 1 drivers
+v0xe15e80_0 .net *"_s2", 3 0, L_0xe17bc0; 1 drivers
+L_0xe17c60 .arith/sum 4, L_0xe17b20, L_0xe17bc0;
+S_0xe15940 .scope generate, "sum_loop[3]" "sum_loop[3]" 4 19, 4 19, S_0xde8fe0;
+ .timescale 0 0;
+P_0xe15a38 .param/l "k" 4 19, +C4<011>;
+v0xe15af0_0 .net *"_s1", 3 0, L_0xe17e00; 1 drivers
+v0xe15b90_0 .net *"_s2", 3 0, L_0xe17ea0; 1 drivers
+L_0xe18050 .arith/sum 4, L_0xe17e00, L_0xe17ea0;
+S_0xdebfd0 .scope generate, "sum_loop[4]" "sum_loop[4]" 4 19, 4 19, S_0xde8fe0;
+ .timescale 0 0;
+P_0xe012e8 .param/l "k" 4 19, +C4<0100>;
+v0xdd8700_0 .net *"_s1", 3 0, L_0xe18140; 1 drivers
+v0xe158a0_0 .net *"_s2", 3 0, L_0xe181e0; 1 drivers
+L_0xe182d0 .arith/sum 4, L_0xe18140, L_0xe181e0;
+    .scope S_0xdeb9f0;
+T_0 ;
+    %set/v v0xe17260_0, 0, 32;
+    %end;
+    .thread T_0;
+    .scope S_0xdeb9f0;
+T_1 ;
+    %movi 8, 32, 32;
+    %set/v v0xe17260_0, 8, 32;
+    %end;
+    .thread T_1;
+    .scope S_0xdeb9f0;
+T_2 ;
+    %wait E_0xdd84d0;
+    %load/v 8, v0xe17260_0, 32;
+    %mov 40, 0, 1;
+    %addi 8, 1, 33;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xe17260_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0xdeb410;
+T_3 ;
+    %delay 100000, 0;
+    %vpi_call 2 13 "$finish";
+    %end;
+    .thread T_3;
+    .scope S_0xdeb410;
+T_4 ;
+    %set/v v0xe175f0_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_0xdeb410;
+T_5 ;
+    %delay 1000, 0;
+    %load/v 8, v0xe175f0_0, 1;
+    %inv 8, 1;
+    %set/v v0xe175f0_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_0xdeb410;
+T_6 ;
+    %wait E_0xdd84d0;
+    %vpi_call 2 35 "$display", "inps = ", v0xe17470_0, " => outp = ", v0xe17520_0;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "balanced_adder_tb.v";
+    "balanced_adder_test.v";
+    "balanced_tree_adder.v";
