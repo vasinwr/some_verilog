@@ -9,23 +9,23 @@ module balance_tree_adder
         output wire [N*DW - 1 : 0] outp
     );
 
-    wire [DW-1:0] regs [1:(2**(2*N))]; // 
+    wire [DW*N-1:0] regs [1:2**N]; // 
 
 	genvar k;
    	genvar j;
- 	assign outp =regs[2**N+2]+regs[2**N+1];
+ 	assign outp =regs[2]+regs[3];
 
     generate  // j=N-1
-          for (k = 1; k <= 2**(N-1); k = k + 1) begin: sum_loop
-                  assign regs[2**(N-1)+k] = inp[k*DW-1:(k-1)*DW]+inp[(k+1)*DW-1:k*DW];
+          for (k = 0; k <= 2**(N-1)-1; k = k + 1) begin: sum_loop
+                  assign regs[2**(N-1)+k] = inp[2*k*DW+DW-1:2*k*DW]+inp[2*k*DW+2*DW-1:2*k*DW+DW];
 
           end           
     endgenerate  
  
     generate 
-          for (j = 2; j <= (N-2); j = j + 1) begin
-          	for (k = 1; k <= 2**(j-1); k = k + 1) begin
-                	assign regs[2**(N+j-2)+k] = regs[2**(N+j-1)+2*k]+regs[2**(N+j-1)+2*k-1];
+          for (j = 1; j <= N-2; j = j + 1) begin
+          	for (k = 0; k <= 2**j-1; k = k + 1) begin
+                	assign regs[2**j+k] = regs[2**(j+1)+2*k]+regs[2**(j+1)+2*k+1];
        		   end           
         end 
     endgenerate  
