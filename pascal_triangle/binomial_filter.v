@@ -6,7 +6,7 @@ module binomial_filter
     (
         input wire clk,
         input wire [DW-1: 0] inp,
-        output wire [DW-1: 0] outp,
+        output wire [DW-1: 0] outp
     );
 
     reg  [DW-1 : 0] regs [1:N];
@@ -33,8 +33,8 @@ module binomial_filter
 
     reg [10:0] j;
 
-    @always(posedge clk) begin
-        for(j = 1 ; j <= N; j++) begin
+    always @ (posedge clk) begin
+        for(j = 1 ; j <= N; j = j+1) begin
             regs[j] <= outps[j];
         end
     end

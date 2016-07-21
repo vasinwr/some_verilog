@@ -10,8 +10,8 @@ module binomial_filter_adder
 
     reg [DW-1:0] r_in;
 
-    @always (posedge clk) begin
-        in <= inp;
+    always @ (posedge clk) begin
+        r_in <= inp;
     end
 
     assign outp = r_in + inp;
