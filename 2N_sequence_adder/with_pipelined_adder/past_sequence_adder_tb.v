@@ -1,6 +1,7 @@
 `timescale 1ps/1ps
 `define DATA_WIDTH 10
 `define N 4
+`define R 2
 
 module past_sequnce_adder_tb ();
 
@@ -23,7 +24,8 @@ module past_sequnce_adder_tb ();
 
 	past_sequence_adder_test #(
 		.data_width(`DATA_WIDTH),
-                .N(`N)
+                .N(`N),
+                .adder_regs(`R)
 	) my_adder (
 		.clk(tb_clk),
 		.outp(outp),

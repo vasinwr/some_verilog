@@ -1,7 +1,8 @@
 module past_sequence_adder
     #(parameter
         N = 4,
-        DW = 8
+        DW = 8,
+        ADDER_REGS = 4
     )
     (
         input wire clk,
@@ -26,12 +27,12 @@ module past_sequence_adder
     genvar i;
 
     //assign sums[1] = regs[1] + inp;
-    pipelined_adder #(.INP_DW(DW), .NUM_REG(2)) add1 (.inp1(regs_wire[1]), .inp2(inp), .outp(sums[1]), .clk(clk));
+    pipelined_adder #(.INP_DW(DW), .NUM_REG(ADDER_REGS)) add1 (.inp1(regs_wire[1]), .inp2(inp), .outp(sums[1]), .clk(clk));
 
     generate 
     for (i = 2; i <= N; i = i + 1) begin: sum_loop
         //assign sums[i] = sums[i-1] + regs[2**(N+i-2) + 2**(i-1)];
-        pipelined_adder #(.INP_DW(DW), .NUM_REG(2)) add (.inp1(sums[i-1]), .inp2(regs_wire[2**(N+i-2)+2**(i-1)]), .outp(sums[i]), .clk(clk));
+        pipelined_adder #(.INP_DW(DW), .NUM_REG(ADDER_REGS)) add (.inp1(sums[i-1]), .inp2(regs_wire[2**(N+i-2)+2**(i-1)]), .outp(sums[i]), .clk(clk));
     end
     endgenerate  
 

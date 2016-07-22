@@ -1,7 +1,8 @@
 module past_sequence_adder_test
     #(parameter
         data_width = 8,
-        N = 4
+        N = 4,
+        adder_regs = 4
     )
     (
         input wire clk,
@@ -22,7 +23,8 @@ module past_sequence_adder_test
     past_sequence_adder
         #(
             .N(N),
-            .DW(data_width)
+            .DW(data_width),
+            .ADDER_REGS(adder_regs)
         ) my_past_sequence_adder (
             .clk(clk),
             .inp(count),
