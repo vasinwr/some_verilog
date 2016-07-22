@@ -5,22 +5,22 @@
 VERILOG:=iverilog
 SIMULATOR:=vvp
 
-SRCS := past_sequence_adder.v past_sequence_adder_test.v past_sequence_adder_tb.v
+SRCS := balanced_tree_adder.v balanced_adder_test.v  balanced_adder_tb.v
 
 .PHONY : all
 
-all: past_sequence_adder
+all: balanced_tree
 
 
 # build simulation
-past_sequence_adder : $(SRCS)
+balanced_tree : $(SRCS)
 	$(VERILOG) -o $@  $(SRCS)	
 
 
 # run simulation
 .PHONY : runsim
 runsim:
-	$(SIMULATOR) past_sequence_adder
+	$(SIMULATOR) balanced_tree
 
 
 # cleanup
@@ -31,5 +31,5 @@ clean:
 # delete all built files
 .PHONY : realclean
 realclean:
-	$(RM) past_sequence_adder
+	$(RM) balanced_tree
 

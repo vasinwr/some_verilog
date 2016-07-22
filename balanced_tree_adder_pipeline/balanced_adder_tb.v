@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
-`define DATA_WIDTH 10
-`define N 4
+`define DATA_WIDTH 4
+`define N 3
 
-module past_sequnce_adder_tb ();
+module balanced_adder_tb ();
 
 	// note this only runs for 50 cycles with the below settings
 	// alter TB_TIMEOUT to run longer
@@ -15,13 +15,14 @@ module past_sequnce_adder_tb ();
 	// clock
 	reg tb_clk = 1'b0;
 	always #(TB_CLK_PERIOD/2) tb_clk = ~tb_clk;
-
+//reg[10:0] k;
 
 	// DUT
-	wire [`DATA_WIDTH-1 : 0] outp;
-	wire [`DATA_WIDTH - 1 : 0] inps;
+	wire [`DATA_WIDTH*`N-1 : 0] outp;
+	wire [`DATA_WIDTH*(2**`N) - 1 : 0] inps;
 
-	past_sequence_adder_test #(
+
+	balanced_adder_test #(
 		.data_width(`DATA_WIDTH),
                 .N(`N)
 	) my_adder (
@@ -32,6 +33,11 @@ module past_sequnce_adder_tb ();
 	// display inputs and output on each clock cycle
 	always @(posedge tb_clk) begin
 		$display("inps = ", inps, " => outp = ", outp);
+     //     for (k = 1; k <= 2**(N-1); k = k + 1) begin
+		//$display("inps = ", inps[k*`DATA_WIDTH-1:(k-1)*`DATA_WIDTH], " => outp = ", outp);
+
+      //    end     
+
 	end
 
 endmodule
