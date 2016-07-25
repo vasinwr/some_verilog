@@ -2,7 +2,7 @@
 
 `timescale 1ps/1ps
 `define INP_DATA_WIDTH 8
-`define REGS 2  //wouldn't work with REGS 0
+`define REGS 4  //wouldn't work with REGS 0
 
 module pipelined_adder_tb ();
 
