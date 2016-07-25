@@ -46,7 +46,8 @@ module tb ();
 
         pipelined_adder	 
 		# (
-			.INP_DW(data_width)
+			.INP_DW(data_width),
+                        .NUM_REG(2)
 		)
 		DUT 
 		(

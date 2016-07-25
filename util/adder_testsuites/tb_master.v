@@ -1,9 +1,5 @@
 // TB master: generate inputs for test bench
 
-
-// Xilinx requires timescale in all source files
-`timescale 1ps/1ps
-
 module tb_master 
 	# ( parameter
 		data_width = 8
