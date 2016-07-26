@@ -53,7 +53,7 @@ module tb_master
 				$fwrite(outfile, "%d %d -> %d\n", reg_a, reg_b, inp);
 			end
 			// print inputs and outputs on each cycle
-			$display($time, ": a=%d, b=%d => =%d", reg_a, reg_b, inp);
+			#(1_000)$display($time, ": a=%d, b=%d => =%d", reg_a, reg_b, inp);   //added delay to give time to DUT because DUT uses clk as well
 			// read inputs from file
 			statusI = $fscanf(infile, "%d %d\n", reg_a, reg_b);
 			//statusI = $fscanf(infile, "%d %d\n", in_a, in_b);

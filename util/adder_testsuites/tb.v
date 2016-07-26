@@ -16,6 +16,9 @@ module tb ();
 	// clock
 	reg tb_clk = 1'b0;
 	always #(TB_CLK_PERIOD / 2) tb_clk = ~tb_clk;
+        // clock
+	reg tb_clk2 = 1'b0;
+	always #(TB_CLK_PERIOD / 3) tb_clk2 = ~tb_clk2;
 	//reset
 	reg tb_rst = 1'b1;
 	initial begin
