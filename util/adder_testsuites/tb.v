@@ -4,6 +4,7 @@
 
 // set global data bitwidth
 `define DATA_WIDTH    3
+`define REGS 2
 
 // test bench
 module tb ();
@@ -18,7 +19,7 @@ module tb ();
 	always #(TB_CLK_PERIOD / 2) tb_clk = ~tb_clk;
         // clock
 	reg tb_clk2 = 1'b0;
-	always #(TB_CLK_PERIOD / 3) tb_clk2 = ~tb_clk2;
+	always @(posedge tb_clk) #(0.1_000) tb_clk2 = ~tb_clk2;
 	//reset
 	reg tb_rst = 1'b1;
 	initial begin
@@ -50,7 +51,7 @@ module tb ();
         pipelined_adder	 
 		# (
 			.INP_DW(data_width),
-                        .NUM_REG(2)
+                        .NUM_REG(`REGS)
 		)
 		DUT 
 		(
