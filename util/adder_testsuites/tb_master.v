@@ -56,7 +56,7 @@ module tb_master
 			// print inputs and outputs on each cycle
 			#(0.1_000)$display($time, ": a=%d, b=%d => =%d", reg_a, reg_b, inp);   //added delay to give time to DUT because DUT uses clk as well
 			// read inputs from file
-			#(0.1_000)statusI = $fscanf(infile, "%d %d\n", reg_a, reg_b);
+			#(0.2_000)statusI = $fscanf(infile, "%d %d\n", reg_a, reg_b);
 			//statusI = $fscanf(infile, "%d %d\n", in_a, in_b);
 			//reg_a <= in_a;
 			//reg_b <= in_b;
