@@ -1,0 +1,151 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xd278d0 .scope module, "inter_tb" "inter_tb" 2 7;
+ .timescale -12 -12;
+P_0xd363b8 .param/l "TB_CLK_PERIOD" 2 12, +C4<011111010000>;
+P_0xd363e0 .param/l "TB_RST_PERIOD" 2 13, +C4<0111110100000>;
+P_0xd36408 .param/l "TB_TIMEOUT" 2 11, +C4<011000011010100000>;
+v0xd50620_0 .net "count_out", 31 0, L_0xd509d0; 1 drivers
+v0xd506d0_0 .net "outp", 31 0, v0xd503f0_0; 1 drivers
+v0xd50780_0 .net "s1i_rdy", 0 0, L_0xd50cd0; 1 drivers
+v0xd50850_0 .var "tb_clk", 0 0;
+S_0xd25c10 .scope module, "my_matrix_mult_vector_test" "inter_test" 2 29, 3 1, S_0xd278d0;
+ .timescale 0 0;
+P_0xd39378 .param/l "num_bits" 3 3, +C4<0100000>;
+L_0xd509d0 .functor BUFZ 32, v0xd50160_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0xd500c0_0 .net "clk", 0 0, v0xd50850_0; 1 drivers
+v0xd50160_0 .var "count", 31 0;
+v0xd50210_0 .alias "count_out", 31 0, v0xd50620_0;
+v0xd50290_0 .net "outp", 31 0, v0xd50020_0; 1 drivers
+v0xd50370_0 .net "outp_inps", 0 0, L_0xd50ad0; 1 drivers
+v0xd503f0_0 .var "outp_reg", 31 0;
+v0xd50470_0 .alias "outputer", 31 0, v0xd506d0_0;
+v0xd504f0_0 .alias "s1i_rdy", 0 0, v0xd50780_0;
+v0xd50570_0 .net "s1o_valid", 0 0, v0xd4ff20_0; 1 drivers
+L_0xd50ad0 .part v0xd50160_0, 0, 1;
+S_0xd14080 .scope module, "interya" "inter" 3 42, 4 9, S_0xd25c10;
+ .timescale 0 0;
+P_0xd3a2e8 .param/l "num_bits" 4 11, +C4<0100000>;
+L_0xd50c20 .functor NOT 1, v0xd4ff20_0, C4<0>, C4<0>, C4<0>;
+L_0xd50cd0 .functor OR 1, L_0xd50c20, C4<1>, C4<0>, C4<0>;
+v0xd38df0_0 .net *"_s2", 0 0, L_0xd50c20; 1 drivers
+v0xd4f980_0 .alias "clk", 0 0, v0xd500c0_0;
+v0xd4fa20_0 .var "last_input", 31 0;
+v0xd4fac0_0 .net "rst", 0 0, C4<0>; 1 drivers
+v0xd4fb70_0 .net "s1i_data", 31 0, v0xd50160_0; 1 drivers
+v0xd4fc10_0 .alias "s1i_rdy", 0 0, v0xd50780_0;
+v0xd4fcf0_0 .net "s1i_valid", 0 0, C4<1>; 1 drivers
+v0xd4fd90_0 .alias "s1o_data", 31 0, v0xd50290_0;
+v0xd4fe80_0 .net "s1o_rdy", 0 0, C4<1>; 1 drivers
+v0xd4ff20_0 .var "s1o_valid", 0 0;
+v0xd50020_0 .var "sum", 31 0;
+E_0xd26290 .event posedge, v0xd4f980_0;
+    .scope S_0xd14080;
+T_0 ;
+    %set/v v0xd50020_0, 0, 32;
+    %end;
+    .thread T_0;
+    .scope S_0xd14080;
+T_1 ;
+    %wait E_0xd26290;
+    %load/v 8, v0xd4fac0_0, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xd50020_0, 0, 0;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v0xd4fcf0_0, 1;
+    %load/v 9, v0xd4fc10_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.2, 8;
+    %load/v 8, v0xd50020_0, 32;
+    %load/v 40, v0xd4fb70_0, 32;
+    %add 8, 40, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xd50020_0, 0, 8;
+    %load/v 8, v0xd4fb70_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xd4fa20_0, 0, 8;
+T_1.2 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0xd14080;
+T_2 ;
+    %wait E_0xd26290;
+    %load/v 8, v0xd4fac0_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xd4ff20_0, 0, 0;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/v 8, v0xd4fc10_0, 1;
+    %jmp/0xz  T_2.2, 8;
+    %load/v 8, v0xd4fcf0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xd4ff20_0, 0, 8;
+T_2.2 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0xd25c10;
+T_3 ;
+    %movi 8, 5, 32;
+    %set/v v0xd50160_0, 8, 32;
+    %end;
+    .thread T_3;
+    .scope S_0xd25c10;
+T_4 ;
+    %wait E_0xd26290;
+    %load/v 8, v0xd504f0_0, 1;
+    %jmp/0xz  T_4.0, 8;
+    %load/v 8, v0xd50160_0, 32;
+    %mov 40, 0, 1;
+    %addi 8, 1, 33;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xd50160_0, 0, 8;
+T_4.0 ;
+    %load/v 8, v0xd50570_0, 1;
+    %jmp/0xz  T_4.2, 8;
+    %load/v 8, v0xd50290_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0xd503f0_0, 0, 8;
+T_4.2 ;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0xd278d0;
+T_5 ;
+    %delay 100000, 0;
+    %vpi_call 2 15 "$finish";
+    %end;
+    .thread T_5;
+    .scope S_0xd278d0;
+T_6 ;
+    %set/v v0xd50850_0, 0, 1;
+    %end;
+    .thread T_6;
+    .scope S_0xd278d0;
+T_7 ;
+    %delay 1000, 0;
+    %load/v 8, v0xd50850_0, 1;
+    %inv 8, 1;
+    %set/v v0xd50850_0, 8, 1;
+    %jmp T_7;
+    .thread T_7;
+    .scope S_0xd278d0;
+T_8 ;
+    %wait E_0xd26290;
+    %vpi_call 2 37 "$display", " => outp = ", v0xd506d0_0, " s1i_rdy = ", v0xd50780_0, " count_out = ", v0xd50620_0;
+    %jmp T_8;
+    .thread T_8;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "inter_tb.v";
+    "inter_test.v";
+    "inter.v";
