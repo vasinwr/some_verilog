@@ -11,3 +11,8 @@ To run the example:
   1. `make`
   2. `make runsim` 
 
+Parameter
+--
+To set the number of blocks ie 'N'
+  1. go to `past_sequence_adder_tb.v`
+  2. change parameter `N` 
