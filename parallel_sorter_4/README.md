@@ -15,5 +15,6 @@ To run the example:
 
 Instruction
 --
-To make: `make`
+Make sure `iverilog` is installed. <br>
+To make: `make` <br>
 To clean: `make clean`

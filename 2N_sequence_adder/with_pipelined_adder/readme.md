@@ -5,6 +5,11 @@ This is similar to the "with normal adder" design except that it uses an adder w
 
 ![alt text](https://github.com/vasinwr/some_verilog/blob/master/2N_sequence_adder/with_normal_adder/design.png "Logo Title Text 1")
 
+Instruction
+--
+Make sure `iverilog` is installed. <br>
+To make: `make` <br>
+To clean: `clean`
 
 Example
 --
