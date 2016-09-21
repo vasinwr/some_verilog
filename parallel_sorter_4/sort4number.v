@@ -1,4 +1,4 @@
-module sort5number
+module sort4number
     #(parameter
         DW = 8
     )

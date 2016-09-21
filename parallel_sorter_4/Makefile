@@ -5,22 +5,22 @@
 VERILOG:=iverilog
 SIMULATOR:=vvp
 
-SRCS := sort5number.v sort5number_test.v sort5number_tb.v comparator.v
+SRCS := sort4number.v sort4number_test.v sort4number_tb.v comparator.v
 
 .PHONY : all
 
-all: sort5number
+all: sort4number
 
 
 # build simulation
-sort5number : $(SRCS)
+sort4number : $(SRCS)
 	$(VERILOG) -o $@  $(SRCS)	
 
 
 # run simulation
 .PHONY : runsim
 runsim:
-	$(SIMULATOR) sort5number
+	$(SIMULATOR) sort4number
 
 
 # cleanup
@@ -31,4 +31,4 @@ clean:
 # delete all built files
 .PHONY : realclean
 realclean:
-	$(RM) sort5number
+	$(RM) sort4number

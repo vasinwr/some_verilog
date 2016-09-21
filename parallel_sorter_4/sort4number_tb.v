@@ -5,7 +5,7 @@
 `define NUM_ELEMS 4
 
 
-module inner_product_tb ();
+module sort4number_tb ();
 
 	// note this only runs for 50 cycles with the below settings
 	// alter TB_TIMEOUT to run longer
@@ -24,9 +24,9 @@ module inner_product_tb ();
 	wire [(`NUM_ELEMS * `DATA_WIDTH)-1 : 0] outp;
 	wire [(`NUM_ELEMS * `DATA_WIDTH) - 1 : 0] inps;
 
-	sort5number_test #(
+	sort4number_test #(
 		.data_width(`DATA_WIDTH)
-	) my_inner_product_test (
+	) my_sort4number_test (
 		.clk(tb_clk),
 		.outp(outp),
 		.outp_inps(inps) // the count

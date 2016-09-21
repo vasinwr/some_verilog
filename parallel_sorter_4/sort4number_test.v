@@ -1,4 +1,4 @@
-module sort5number_test
+module sort4number_test
   #(parameter 
       data_width = 3)
   (
@@ -20,7 +20,7 @@ module sort5number_test
       assign outp_inps = count;
 
       // instantiate 
-      sort5number
+      sort4number
           #(
                 .DW(data_width)
           ) my_inner_product (
