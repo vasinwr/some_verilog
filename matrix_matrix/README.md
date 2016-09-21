@@ -9,14 +9,14 @@ Make sure Icarus Verilog (iverilog) is installed
 
 to build:
 
-make
+`make`
 
 
 to run simulation:
 
-make runsim
+`make runsim`
 
 
 to cleanup:
 
-make clean
+`make clean`
