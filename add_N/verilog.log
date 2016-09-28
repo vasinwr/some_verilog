@@ -1,0 +1,16 @@
+GPLCVER_2.12a of 05/16/07 (Linux-elf).
+Copyright (c) 1991-2007 Pragmatic C Software Corp.
+  All Rights reserved.  Licensed under the GNU General Public License (GPL).
+  See the 'COPYING' file for details.  NO WARRANTY provided.
+Today is Thu Jun 30 01:48:48 2016.
+Compiling source file "add_N.v"
+**add_N.v(10) ERROR** [995] list of ports form declaration list comma or right paren expected - [ read
+**add_N.v(11) ERROR** [980] module header list of ports end semicolon expected - output read
+**add_N.v(11) ERROR** [3421] output declaration of "outp" illegal - module uses list of ports declaration form
+**add_N.v(12) ERROR** [995] I/O port declaration list comma or semicolon expected - ) read
+**add_N.v(15) ERROR** [1044] instance/gate "i" type "genvar" connection list expected - ; read
+**add_N.v(16) ERROR** [1003] wire sums cannot be an array
+**add_N.v(21) ERROR** [3549] generate feature not implemented in this version
+  Unable to begin simulation.
+  There were 7 error(s), 0 warning(s), and 0 inform(s).
+End of GPLCVER_2.12a at Thu Jun 30 01:48:48 2016 (elapsed 0.0 seconds).

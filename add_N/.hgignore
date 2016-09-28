@@ -1,0 +1,15 @@
+# files not in version control
+
+syntax: glob
+
+
+# Python output
+obj_dir
+
+# Xilinx output
+xsim.dir
+
+# editor temp files
+*~
+*.swp
+
